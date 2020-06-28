@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './transaction.dart';
 
 void main() => runApp(MyApp());
 
@@ -39,6 +40,22 @@ class MyApp extends StatelessWidget {
 //   }
 // }
 class HomePage extends StatelessWidget {
+  final List<Transaction> transactions = [
+    //Cominciamo con il creare una transazione fittizia che poi avrà valori dinamici
+    //Istanzio il nuovo oggetto
+    Transaction(
+      id: 't1',
+      title: 'Pc',
+      amount: 1300.99,
+      dateTransaction: DateTime.now(),
+    ),
+    Transaction(
+      id: 't2',
+      title: 'Shoes',
+      amount: 59.99,
+      dateTransaction: DateTime.now(),
+    )
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +63,8 @@ class HomePage extends StatelessWidget {
         title: Text("Flutter App"),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           //Card è un widget integrato di flutter
           Container(
@@ -57,9 +75,11 @@ class HomePage extends StatelessWidget {
               elevation: 5,
             ),
           ),
-          Card(
-            color: Colors.red[300],
-            child: Text('List of transaction'),
+          Column(
+            //utilizzo il metodo map per trasformare questo elenco di oggetti in un elenco di widget(in modo che vengano generati in maniera dinamica). NB MAP prende sempre una funzione interna con un argomento
+            children: transactions.map((transaction) {
+              return Card(child: Text(transaction.title));
+            }).toList(),
           )
         ],
       ),
