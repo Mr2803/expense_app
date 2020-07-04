@@ -21,7 +21,13 @@ class _NewTransactionState extends State<NewTransaction> {
     if (inputTitleUser.isEmpty || inputAmountUser <= 0) {
       return;
     }
-    widget.addTransaction(inputTitleUser, inputAmountUser);
+    widget.addTransaction(
+      inputTitleUser,
+      inputAmountUser,
+    );
+
+    //Navigator mi permette di chiudere il widget modale appena completato l'aggiunta della nuova transazione
+    Navigator.of(context).pop();
   }
 
   @override
