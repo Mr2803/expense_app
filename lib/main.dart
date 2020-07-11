@@ -100,11 +100,12 @@ class _HomePageState extends State<HomePage> {
     }).toList();
   }
 
-  void _addNewTransaction(String transactionTitle, double transactionAmount) {
+  void _addNewTransaction(
+      String transactionTitle, double transactionAmount, DateTime chosenDate) {
     final newTransaction = Transaction(
         title: transactionTitle,
         amount: transactionAmount,
-        dateTransaction: DateTime.now(),
+        dateTransaction: chosenDate,
         //per il momento assegno questo valore in modo che venga assegnato in automatico e sia unico
         id: DateTime.now().toString());
 
