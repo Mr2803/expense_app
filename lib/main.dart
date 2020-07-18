@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Mr Exspense App",
+      title: "Mr Expense App",
       theme: ThemeData(
           primarySwatch: Colors.orange,
           //questo definisce in autmatico il colore del widget fornito da flutter del bottone floating , se non trova un accent si basa sul colore primario
