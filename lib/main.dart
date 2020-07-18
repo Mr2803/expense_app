@@ -126,12 +126,18 @@ class _HomePageState extends State<HomePage> {
         });
   }
 
+  void _deleteTransaction(String id) {
+    setState(() {
+      _userTransactions.removeWhere((tx) => tx.id == id);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Exspense App",
+          "Spese personali",
           //questo è sconveniente perchè se avessi un app con più pagine dovrei impostare lo stesso style text per ogni pagina , per cui posso impostare direttamente il tema della navbar e modificarne il carattere
           // style: TextStyle(
           //   fontFamily: 'Quicksans',
@@ -152,7 +158,7 @@ class _HomePageState extends State<HomePage> {
             //Card è un widget integrato di flutter
 
             Chart(_recentTransactions),
-            TransactionList(_userTransactions),
+            TransactionList(_userTransactions, _deleteTransaction),
           ],
         ),
       ),
